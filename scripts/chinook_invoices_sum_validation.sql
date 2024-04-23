@@ -1,5 +1,4 @@
-/* Data validation  -- 
-sum of the items from the invoice_items table agree with the sum (total) of the invoices table */
+/* Data validation: sum of the items from the invoice_items table agree with the sum (total) of the invoices table */
 
 SELECT invoice_items.InvoiceId AS id,
        ROUND(SUM(invoice_items.UnitPrice), 2) AS invoice_items_total,
