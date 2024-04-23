@@ -1,4 +1,4 @@
-/* total sales value per genre */ 
+--total sales value per genre
 
 WITH tspg AS (
     SELECT ii.InvoiceId AS invoice_id,
