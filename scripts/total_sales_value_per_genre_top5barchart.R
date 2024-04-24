@@ -4,7 +4,7 @@
 # which is located in the working directory
 #------------------------------------------------------------------------------
 
-# set working directory and load the file
+# load the file
 df <- read.csv("genre.csv", header = TRUE, sep = ",")
 
 #Set the appropriate vector types
