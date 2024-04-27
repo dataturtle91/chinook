@@ -1,3 +1,5 @@
+--total sales value per genre
+
 WITH tspg AS (
     SELECT 
            ii.InvoiceId AS invoice_id
@@ -18,10 +20,11 @@ WITH tspg AS (
 SELECT 
         genres.Name AS genre
        ,tspg.total_sales
-       ,dense_rank() over (order by total_sales DESC) AS sales_ranking
+       ,(ROUND((tspg.total_sales / (SELECT SUM(total_sales) FROM tspg)),2) * 100) AS total_sales_percentage
+       ,dense_rank () OVER (ORDER BY total_sales DESC) AS rank
 FROM 
       tspg
 LEFT JOIN
        genres ON tspg.genre_id = genres.GenreId
  ORDER BY 
-     total_sales DESC
+     total_sales DESC;
