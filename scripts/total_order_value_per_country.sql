@@ -10,4 +10,4 @@ SELECT
 GROUP BY 
     country
 ORDER BY
-    total DESC
+    total_order_value DESC
