@@ -1,4 +1,4 @@
-³library(DBI)
+library(DBI)
 library(ggplot2)
 library(plotly)
 
