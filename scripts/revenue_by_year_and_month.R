@@ -1,4 +1,4 @@
-library(DBI)
+³library(DBI)
 library(ggplot2)
 library(plotly)
 
@@ -34,8 +34,8 @@ GROUP BY year, month")
 
 
 # End connection with Chinook database
-dbDisconnect(con)
 
+dbDisconnect(con)
 
 # Create year by year revenue chart
 
@@ -50,11 +50,6 @@ ggplotly(yearly_plot)
 
 # Create monthly revenue chart
 
-## Create tooltip for chart
-monthly <- monthly %>%
-  mutate(tooltip_label = paste("Year:", year, "<br>Month:", month, "<br>Revenue:", revenue))
-
-## Create chart
 monthly_plot <- ggplot(monthly,aes(x = month, y = revenue,group = year)) +
   geom_line(color = "slategray") +
   facet_wrap(~ year, ncol = 3,nrow = 2) +
