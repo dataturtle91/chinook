@@ -53,6 +53,22 @@ Zadanie: Zidentyfikuj pracownika (Employee), który jest odpowiedzialny za najwy
 Pracownik jest powiązany z klientem poprzez kolumnę SupportRepId w tabeli Customer. 
 Wyświetl imię, nazwisko pracownika oraz łączną kwotę sprzedaży, którą obsłużył. */
 
+SELECT
+    e.firstname
+    ,e.lastname
+    ,ROUND(SUM(i.total),2) AS total
+    
+FROM 
+    invoices i
+LEFT JOIN customers c ON i.customerid = c.customerid
+LEFT JOIN employees e ON c.supportrepid = e.employeeid
+
+GROUP BY
+    e.employeeid
+    
+ORDER BY total DESC
+LIMIT 1;
+
 /* ZADANIE 4.
 Klienci, którzy kupili Utwory danego Artysty
 Zadanie: Znajdź imię i nazwisko wszystkich klientów, którzy kupili co najmniej jeden utwór artysty o imieniu "Led Zeppelin". 
