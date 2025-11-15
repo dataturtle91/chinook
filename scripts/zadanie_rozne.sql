@@ -31,4 +31,38 @@ ORDER BY
 /* ZADANIE 2. 
 Najpopularniejszy Gatunek Muzyczny
 Zadanie: Określ, który gatunek muzyczny (Genre) został sprzedany w największej łącznej ilości (sumując Quantity z tabeli InvoiceLine). 
-Wyświetl nazwę gatunku i łączną liczbę sprzedanych sztuk.
+Wyświetl nazwę gatunku i łączną liczbę sprzedanych sztuk. */
+
+SELECT
+    g.name AS genre
+    ,SUM(i.quantity) AS quantity
+
+FROM
+    invoice_items i
+    
+LEFT JOIN tracks t  ON i.trackid = t.trackid
+LEFT JOIN genres g  ON t.genreid = g.genreid
+
+GROUP BY
+    genre
+ORDER BY quantity DESC;
+
+/* ZADANIE 3.
+Najlepiej sprzedający pracownik
+Zadanie: Zidentyfikuj pracownika (Employee), który jest odpowiedzialny za najwyższą łączną kwotę sprzedaży (sumę Total z tabeli Invoice). 
+Pracownik jest powiązany z klientem poprzez kolumnę SupportRepId w tabeli Customer. 
+Wyświetl imię, nazwisko pracownika oraz łączną kwotę sprzedaży, którą obsłużył. */
+
+/* ZADANIE 4.
+Klienci, którzy kupili Utwory danego Artysty
+Zadanie: Znajdź imię i nazwisko wszystkich klientów, którzy kupili co najmniej jeden utwór artysty o imieniu "Led Zeppelin". 
+Upewnij się, że na liście nie ma duplikatów. */
+
+/* ZADANIE 5.
+Największy Spender (Klient)
+Zadanie: Zidentyfikuj klienta, który wydał najwięcej pieniędzy ogółem (sumując Total z tabeli Invoice). 
+Wyświetl jego imię, nazwisko i całkowitą kwotę, jaką wydał. */
+
+
+
+
